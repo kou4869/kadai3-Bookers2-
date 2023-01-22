@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div>
+      
+      <h2>User info</h2>
+      
+      <div>
+      <% @user.each do |user| %>
+      <table class="user-table">
+        <tbody>
+          
+          <tr>
+            <th>name</th>
+            <th><%= @user.user_name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div>
+        <a class="btn btn-secondary btn-block">
+          <%= link_to edit_user_path(current_user.id) do %>
+            <i class='fas fa-user-cog'></i>
+          <% end %>
+        </a>
+      </div>
+      <% end %>
+      </div>
+      
+      <h2>New book</h2>
+        <% = form.with model: @book do |b| %>
+        
+  
+      
+    </div>
+  </div>
+</div>
