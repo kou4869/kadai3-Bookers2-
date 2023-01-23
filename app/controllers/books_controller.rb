@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
-  
+
   def new
     @book = Book.new
   end
-  
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
@@ -13,18 +13,20 @@ class BooksController < ApplicationController
       render user_params(current_user)
     end
   end
-  
+
   def index
     @books = Book.all
+    @book = Book.new
+    @user = current_user
   end
 
   def show
   end
-  
+
   private
-  
+
   def book_params
     params.require(:book).permit(:title, :Opinion)
   end
-  
+
 end

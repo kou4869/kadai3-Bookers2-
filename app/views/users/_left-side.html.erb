@@ -1,40 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div>
+<h2>User info</h2>
       
-      <h2>User info</h2>
-      
-      <div>
-      <% @user.each do |user| %>
-      <table class="user-table">
-        <tbody>
-          
-          <tr>
-            <th>name</th>
-            <th><%= @user.name %></th>
-          </tr>
-          <tr>
-            <th>introduction</th>
-            <th><%= @user.introduction %></th>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div>
-        <a class="btn btn-secondary btn-block">
-          <%= link_to edit_user_path(current_user.id) do %>
-            <i class='fas fa-user-cog'></i>
-          <% end %>
-        </a>
-      </div>
-      <% end %>
-      </div>
-      
-      <h2>New book</h2>
-        <% = form.with model: @book do |b| %>
-        
-  
-      
-    </div>
-  </div>
+<div class="profile_image">
+  <%= image_tag user.get_profile_image(100,100) %>
 </div>
+<div>
+  <table class="table tadle-striped">
+    <tbody>
+      <tr>
+        <th>name</th>
+        <th><%= user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
+      
+  <div>
+    <li class="btn btn-outline-secondary btn-block">
+      <%= link_to edit_user_path(current_user.id) do %>
+        <i class='fas fa-user-cog'></i>
+      <% end %>
+    </li>
+  </div>
+</div><br>
+      
+<h2>New book</h2>
+      
+<div class="new-book">
+<%= form_with model: book do |b| %>
+  <div class"form-group">
+    <label>Title</label><br>
+    <%= b.text_field :title %>
+  </div>
+  <div class="form-group">
+    <label>Opinion</label><br>
+    <%= b.text_area :opinion %>
+  </div><br>
+        
+  <%= b.submit 'Create Book', class: "btn btn-success btn-block" %>
+<% end %>  
+</div>
+      
+ 
