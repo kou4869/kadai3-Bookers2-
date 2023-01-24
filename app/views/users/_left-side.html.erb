@@ -1,5 +1,5 @@
 <h2>User info</h2>
-      
+
 <div class="profile_image">
   <%= image_tag user.get_profile_image(100,100) %>
 </div>
@@ -16,31 +16,28 @@
       </tr>
     </tbody>
   </table>
-      
+
   <div>
-    <li class="btn btn-outline-secondary btn-block">
-      <%= link_to edit_user_path(current_user.id) do %>
-        <i class='fas fa-user-cog'></i>
-      <% end %>
-    </li>
+    <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+      <i class='fas fa-user-cog'></i>
+    <% end %>
   </div>
 </div><br>
-      
+
 <h2>New book</h2>
-      
+
 <div class="new-book">
 <%= form_with model: book do |b| %>
   <div class"form-group">
     <label>Title</label><br>
     <%= b.text_field :title %>
-  </div>
+  </div><br>
   <div class="form-group">
     <label>Opinion</label><br>
-    <%= b.text_area :opinion %>
-  </div><br>
-        
+    <%= b.text_area :body %>
+  </div>
+
   <%= b.submit 'Create Book', class: "btn btn-success btn-block" %>
-<% end %>  
+<% end %>
 </div>
-      
- 
+

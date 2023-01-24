@@ -1,5 +1,14 @@
-<div class="container px-5 px-sm-0">
-  <div class="row">
+<div class="container px-5 px-sm-0"><br>
+  <% if @book.errors.any? %>
+  <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3> 
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+　<% end %>
+    
+  <div class="row">  
     <div class="col-md-3">
       <%= render 'users/left-side', book: @book, user: @user %>
     </div>
@@ -7,5 +16,6 @@
     <div class="col-md-8 offset-md-1">
       <%= render 'right-side', books: @books %>
     </div>
+    
   </div>
 </div>

@@ -2,27 +2,36 @@
   <div class="row">
     <div class="col-lg-12 mx-auto">
       <h2>User info</h2>
-      
+
+      <% if @user.errors.any? %>
+      <h3><%= @user.errors.count %> error prohibited this obj from being saved:</h3>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+　    <% end %>
+
       <div class="form-group">
-      <%= form_with model: @user do |f| %>
+      <%= form_with model: @user,url: user_path(@user.id), method: :patch do |f| %>
         <div class="field-item">
           <label for="inputName">Name</label><br>
           <%= f.text_field :name, autofocus: true, id:"inputName" %>
-        </div>
+        </div><br>
         <div class="field-item">
           <label for="inputImage">Image</label><br>
           <%= f.file_field :profile_image, accept: "image/*" %>
-        </div>
+        </div><br>
         <div class="field-item">
           <label for="inputIntroduction">Introduction</label><br>
           <%= f.text_field :introduction %>
-        </div>
+        </div><br>
         <div class="field-item">
           <%= f.submit nil, class: "btn btn-secondary" %>
         </div>
       <% end %>
       </div>
-      
+
     </div>
   </div>
 </div>
