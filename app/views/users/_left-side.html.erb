@@ -27,17 +27,17 @@
 <h2>New book</h2>
 
 <div class="new-book">
-<%= form_with model: book do |b| %>
-  <div class"form-group">
-    <label>Title</label><br>
-    <%= b.text_field :title %>
-  </div><br>
-  <div class="form-group">
-    <label>Opinion</label><br>
-    <%= b.text_area :body %>
-  </div>
+  <%= form_with model: book do |b| %>
+    <div class"form-group">
+      <%= b.label :title %><br>
+      <%= b.text_field :title %>
+    </div><br>
+    <div class="form-group">
+      <%= b.label :body %><br>
+      <%= b.text_area :body %>
+    </div>
 
-  <%= b.submit 'Create Book', class: "btn btn-success btn-block" %>
+    <%= b.submit 'Create Book', class: "btn btn-success btn-block" %>
 <% end %>
 </div>
 
